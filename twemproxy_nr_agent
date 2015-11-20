@@ -14,7 +14,7 @@ module TwemproxyAgent
     agent_guid "com.schoology.twemproxy"
     agent_version "0.1.0"
     agent_config_options :host, :port
-    agent_human_labels("Twemproxy Agent") { "#{host}" }
+    agent_human_labels("Twemproxy Agent") { "Twemproxy agent on #{host} on #{port}" }
 
     def initialize(*args)
       super(*args)
