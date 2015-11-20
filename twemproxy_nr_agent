@@ -8,12 +8,12 @@ require "json"
 
 # Monitors twemproxy by periodically retrieving data from twemproxy's stats port.
 module TwemproxyAgent
-  
+
   class Agent < NewRelic::Plugin::Agent::Base
 
     agent_guid "com.schoology.twemproxy"
     agent_version "0.1.0"
-    agent_config_options :host
+    agent_config_options :host, :port
     agent_human_labels("Twemproxy Agent") { "#{host}" }
 
     def initialize(*args)
@@ -66,7 +66,7 @@ module TwemproxyAgent
 
     # Gets the stats data from twemproxy's stats port
     def twemproxy_data
-      JSON.parse(`/usr/bin/curl #{host} 22222`)
+      JSON.parse(`/usr/bin/curl #{host}:#{port}`)
     end
 
     # Reports the metric as the current value.
